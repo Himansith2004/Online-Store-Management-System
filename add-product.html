@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Product</title>
+  <link rel="stylesheet" href="css files/add-product.css">
+</head>
+<body>
+
+<div class="main-content">
+  <h1>Add New Product</h1>
+
+  <form class="add-form" onsubmit="addProduct(event)">
+    <input type="text" id="name" placeholder="Product Name" required>
+    <input type="number" id="price" placeholder="Price" required>
+    <input type="text" id="image" placeholder="Image URL" required>
+    <button type="submit">Add Product</button>
+  </form>
+
+  <p><a href="index.html">← Back to Shop</a></p>
+</div>
+
+<script src="js files/add-product.js"></script>
+</body>
+</html>
