@@ -44,20 +44,19 @@ function addItem() {
 // ---------- SUBMIT DATA ----------
 
 function submitCustomer() {
-    const data = {
-        loginid: document.getElementById("lid").value,
-        fname: document.getElementById("fname").value,
-        lname: document.getElementById("lname").value,
-        phone: document.getElementById("phone").value,
-        address: document.getElementById("address").value,
-        email: document.getElementById("email").value,
-        password: document.getElementById("password").value
-    };
+
+    const formData = new FormData();
+    formData.append("loginid", document.getElementById("lid").value);
+    formData.append("fname", document.getElementById("fname").value);
+    formData.append("lname", document.getElementById("lname").value);
+    formData.append("phone", document.getElementById("phone").value);
+    formData.append("address", document.getElementById("address").value);
+    formData.append("email", document.getElementById("email").value);
+    formData.append("password", document.getElementById("password").value);
 
     fetch("add_customer.php", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
+        body: formData
     })
     .then(res => res.text())
     .then(msg => {
@@ -71,40 +70,58 @@ function submitCustomer() {
     });
 }
 
+
 function submitSupplier() {
-    const data = {
-        loginid: document.getElementById("slogin").value,
-        name: document.getElementById("sname").value,
-        phone: document.getElementById("sphone").value,
-        address: document.getElementById("saddress").value
-    };
+
+    const formData = new FormData();
+    formData.append("loginid", document.getElementById("slogin").value);
+    formData.append("name", document.getElementById("sname").value);
+    formData.append("phone", document.getElementById("sphone").value);
+    formData.append("address", document.getElementById("saddress").value);
 
     fetch("add_supplier.php", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
+        body: formData
     })
     .then(res => res.text())
-    .then(msg => alert(msg));
+    .then(msg => {
+        if (msg === "OK") {
+            alert("Supplier added successfully");
+            loadSuppliers();
+            formArea.innerHTML = "";
+        } else {
+            alert(msg);
+        }
+    });
 }
 
+
 function submitItem() {
-    const data = {
-        supplierid: document.getElementById("supplierid").value,
-        name: document.getElementById("iname").value,
-        price: document.getElementById("price").value,
-        discount: document.getElementById("discount").value,
-        stock: document.getElementById("stock").value
-    };
+
+    const formData = new FormData();
+    formData.append("supplierid", document.getElementById("supplierid").value);
+    formData.append("name", document.getElementById("iname").value);
+    formData.append("price", document.getElementById("price").value);
+    formData.append("discount", document.getElementById("discount").value);
+    formData.append("stock", document.getElementById("stock").value);
 
     fetch("add_item.php", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
+        body: formData
     })
     .then(res => res.text())
-    .then(msg => alert(msg));
+    .then(msg => {
+        if (msg === "OK") {
+            alert("Item added successfully");
+            loadItems();
+            formArea.innerHTML = "";
+        } else {
+            alert(msg);
+        }
+    });
 }
+
+
 
 // ---------- LOAD DATA (VISUALIZATION) ----------
 

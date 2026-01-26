@@ -1,15 +1,13 @@
 <?php
 include 'connection.php';
 
-$data = json_decode(file_get_contents("php://input"), true);
-
-$loginid = $data['loginid'];
-$fname   = $data['fname'];
-$lname   = $data['lname'];
-$phone   = $data['phone'];
-$address = $data['address'];
-$email   = $data['email'];
-$password= $data['password'];
+$loginid = $_POST['loginid'];
+$fname   = $_POST['fname'];
+$lname   = $_POST['lname'];
+$phone   = $_POST['phone'];
+$address = $_POST['address'];
+$email   = $_POST['email'];
+$password= $_POST['password'];
 
 $sql = "INSERT INTO customer (LoginID, FirstName, LastName, PhoneNumber, Address, Email, Password)
         VALUES ('$loginid','$fname','$lname','$phone','$address','$email','$password')";
