@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="admin.js" defer></script>
+</head>
+<body>
+
+<header>
+    <h1>Admin Dashboard</h1>
+    <nav>
+        <button id="showCustomer" onclick="loadCustomers()">Customers</button>
+        <button id="showSupplier" onclick="loadSuppliers()">Suppliers</button>
+        <button id="showItem" onclick="loadItems()">Items</button>
+        <input type="text" id="searchCustomers" placeholder="Search Customers">
+        <input type="text" id="searchSuppliers" placeholder="Search Suppliers">
+        <input type="text" id="searchItems" placeholder="Search Items">
+    
+    </nav>
+</header>
+
+<main>
+    <h2>User Management</h2>
+
+    <p><button id="addCustomer" onclick="addCustomer()">Add Customer</button>
+    <button id="addSupplier" onclick="addSupplier()">Add Supplier</button>
+    <button id="addItem" onclick="addItem()">Add Item</button></p>
+    <div id="formArea"></div>
+    <table id="dataTable">
+    <thead>
+        <tr id="tableHeader"></tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+</table>
+
+</main>
+
+
+
+</body>
+</html>
