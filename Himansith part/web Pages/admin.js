@@ -122,9 +122,6 @@ function submitItem() {
 }
 
 
-
-// ---------- LOAD DATA (VISUALIZATION) ----------
-
 function loadCustomers() {
     fetch("get_customers.php")
         .then(res => {
@@ -231,6 +228,167 @@ function loadItems() {
 
 
 window.onload = function () {
-    loadCustomers();   // default view
+    loadCustomers();   
 };
 
+function updateCustomerForm(id) {
+    fetch("get_customers.php")
+    .then(res => res.json())
+    .then(data => {
+        const c = data.find(x => x.CustomerID == id);
+
+        formArea.innerHTML = `
+            <h3>Update Customer</h3>
+            <input type="hidden" id="cid" value="${c.CustomerID}">
+            <input type="text" id="lid" value="${c.LoginID}"><br><br>
+            <input type="text" id="fname" value="${c.FirstName}"><br><br>
+            <input type="text" id="lname" value="${c.LastName}"><br><br>
+            <input type="text" id="phone" value="${c.PhoneNumber}"><br><br>
+            <input type="text" id="address" value="${c.Address}"><br><br>
+            <input type="email" id="email" value="${c.Email}"><br><br>
+            <button onclick="saveCustomerUpdate()">Update</button>
+        `;
+    });
+}
+
+function saveCustomerUpdate() {
+    const formData = new FormData();
+    formData.append("id", document.getElementById("cid").value);
+    formData.append("loginid", lid.value);
+    formData.append("fname", fname.value);
+    formData.append("lname", lname.value);
+    formData.append("phone", phone.value);
+    formData.append("address", address.value);
+    formData.append("email", email.value);
+
+    fetch("update_customer.php", { method: "POST", body: formData })
+    .then(res => res.text())
+    .then(msg => {
+        alert(msg);
+        loadCustomers();
+        formArea.innerHTML = "";
+    });
+}
+
+function updateSupplierForm(id) {
+    fetch("get_suppliers.php")
+    .then(res => res.json())
+    .then(data => {
+        const s = data.find(x => x.SupplierID == id);
+
+        formArea.innerHTML = `
+            <h3>Update Supplier</h3>
+            <input type="hidden" id="sid" value="${s.SupplierID}">
+            <input type="text" id="slogin" value="${s.LoginID}"><br><br>
+            <input type="text" id="sname" value="${s.SupplierName}"><br><br>
+            <input type="text" id="sphone" value="${s.PhoneNumber}"><br><br>
+            <input type="text" id="saddress" value="${s.Address}"><br><br>
+            <button onclick="saveSupplierUpdate()">Update</button>
+        `;
+    });
+}
+
+function saveSupplierUpdate() {
+    const formData = new FormData();
+    formData.append("id", sid.value);
+    formData.append("loginid", slogin.value);
+    formData.append("name", sname.value);
+    formData.append("phone", sphone.value);
+    formData.append("address", saddress.value);
+
+    fetch("update_supplier.php", { method: "POST", body: formData })
+    .then(res => res.text())
+    .then(msg => {
+        alert(msg);
+        loadSuppliers();
+        formArea.innerHTML = "";
+    });
+}
+
+function updateItemForm(id) {
+    fetch("get_items.php")
+    .then(res => res.json())
+    .then(data => {
+        const i = data.find(x => x.ItemID == id);
+
+        formArea.innerHTML = `
+            <h3>Update Item</h3>
+            <input type="hidden" id="iid" value="${i.ItemID}">
+            <input type="text" id="supplierid" value="${i.SupplierID}"><br><br>
+            <input type="text" id="iname" value="${i.ItemName}"><br><br>
+            <input type="text" id="price" value="${i.Price}"><br><br>
+            <input type="text" id="discount" value="${i.Discount}"><br><br>
+            <input type="text" id="stock" value="${i.StockQuantity}"><br><br>
+            <button onclick="saveItemUpdate()">Update</button>
+        `;
+    });
+}
+
+function saveItemUpdate() {
+    const formData = new FormData();
+    formData.append("id", iid.value);
+    formData.append("supplierid", supplierid.value);
+    formData.append("name", iname.value);
+    formData.append("price", price.value);
+    formData.append("discount", discount.value);
+    formData.append("stock", stock.value);
+
+    fetch("update_item.php", { method: "POST", body: formData })
+    .then(res => res.text())
+    .then(msg => {
+        alert(msg);
+        loadItems();
+        formArea.innerHTML = "";
+    });
+}
+
+function deleteCustomer(id) {
+    if (!confirm("Are you sure you want to delete this customer?")) return;
+
+    const formData = new FormData();
+    formData.append("id", id);
+
+    fetch("delete_customer.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.text())
+    .then(msg => {
+        alert(msg);
+        loadCustomers();
+    });
+}
+
+function deleteSupplier(id) {
+    if (!confirm("Are you sure you want to delete this supplier?")) return;
+
+    const formData = new FormData();
+    formData.append("id", id);
+
+    fetch("delete_supplier.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.text())
+    .then(msg => {
+        alert(msg);
+        loadSuppliers();
+    });
+}
+
+function deleteItem(id) {
+    if (!confirm("Are you sure you want to delete this item?")) return;
+
+    const formData = new FormData();
+    formData.append("id", id);
+
+    fetch("delete_item.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.text())
+    .then(msg => {
+        alert(msg);
+        loadItems();
+    });
+}
