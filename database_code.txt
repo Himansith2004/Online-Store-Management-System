@@ -9,3 +9,14 @@ CREATE TABLE admin (
     AdminName VARCHAR(255) NOT NULL,
     FOREIGN KEY (LoginID) REFERENCES login(LoginID)
     );
+
+--kavindi
+CREATE TABLE deliveries(
+    OrderID INT NOT NULL,
+    DeliveryLocation VARCHAR(255) NOT NULL,
+    DeliveryMethod ENUM('Home Delivery','PickUp') NOT NULL,
+    DeliveryType ENUM('Same Day Delivery','Express Delivery','Standard Delivery'),
+    DeliveryStatus ENUM('Delivered','Still Not Delivered') NOT NULL,
+    DeliveryDate TIMESTAMP NOT NULL,
+    FOREIGN KEY (OrderID) REFERENCES ORDERS(OrderID)
+    );
