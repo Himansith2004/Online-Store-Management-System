@@ -1,0 +1,7 @@
+--Himansith
+CREATE TABLE admin (
+    AdminID INT AUTO_INCREMENT PRIMARY KEY,
+    LoginID INT NOT NULL,
+    AdminName VARCHAR(255) NOT NULL,
+    FOREIGN KEY (LoginID) REFERENCES login(LoginID)
+    );
