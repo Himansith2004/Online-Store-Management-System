@@ -20,3 +20,23 @@ CREATE TABLE deliveries(
     DeliveryDate TIMESTAMP NOT NULL,
     FOREIGN KEY (OrderID) REFERENCES ORDERS(OrderID)
     );
+
+--Sathira    
+CREATE TABLE supplier (
+    SupplierID INT AUTO_INCREMENT PRIMARY KEY,
+    LoginID INT NOT NULL,
+    SupplierName VARCHAR(255) NOT NULL,
+    SupplierPhoneNumber VARCHAR(20) NOT NULL,
+    SupplierAddress VARCHAR(255) NOT NULL,
+    FOREIGN KEY (LoginID) REFERENCES login(LoginID)
+    );
+
+CREATE TABLE PAYMENTS (
+    CustomerID INT NOT NULL,
+    PaymentID INT NOT NULL,
+    PaymentMethod ENUM('Cash','Card','Online Transfer') NOT NULL,
+    PaymentAmount DECIMAL(10,2) NOT NULL,
+    PaymentDate TIMESTAMP NOT NULL,
+    PRIMARY KEY (CustomerID,PaymentID),
+    FOREIGN KEY (CustomerID) REFERENCES customer(CustomerID)
+    );
