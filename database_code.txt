@@ -1,3 +1,7 @@
+CREATE DATABASE ONLINESTOREMANAGEMENT;
+USE onlinestoremanagementdb;
+
+
 --Himansith
 CREATE TABLE admin (
     AdminID INT AUTO_INCREMENT PRIMARY KEY,
