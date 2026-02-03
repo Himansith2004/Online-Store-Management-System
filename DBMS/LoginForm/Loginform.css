@@ -1,0 +1,100 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #2c3e50;
+    ;
+}
+
+.wrapper {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 15px;
+    width: 350px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.wrapper h1 i {
+    font-size: 50px;
+    color: #6c5ce7;
+    margin-bottom: 10px;
+}
+
+
+.wrapper h1 + h1 {
+    font-size: 22px;
+    margin-bottom: 30px;
+    font-weight: 500;
+    color: #333;
+}
+
+
+.input-box {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.input-box input:focus {
+    border-color: #2c3e50;
+    box-shadow: 0 0 5px rgba(108, 92, 231, 0.5);
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.remember-forgot input {
+    margin-right: 5px;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #2c3e50;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: grey;
+}
+
+.register-link {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #6c5ce7;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}

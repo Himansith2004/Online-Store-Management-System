@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Shopping App</title>
+    <link rel="stylesheet" href="SupplierUI.css">
+  </head>
+
+  <body>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <aside class="sidebar" id="sidebar">
+      <h2>Menu</h2>
+      <ul>
+        <li><a href="http://localhost/DBMS/Supplier/SupplierUI.php">Home</a></li>
+        <li><a href="http://localhost/DBMS/Supplier/add-product.html">Add Products</a></li>
+      </ul>
+    </aside>
+
+    <div class="main-content">
+
+      <header>
+        <h1>Shopping App</h1><br><br>
+        <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
+      </header>
+      <br><br>
+
+      <main id="products-container"></main>
+
+    </div>
+    <div class="topbar">
+      <a href="http://localhost/DBMS/LogOut.php">Logout</a>
+    </div>
+
+
+    <script src="SupplierUI.js"></script>
+  </body>
+
+</html>

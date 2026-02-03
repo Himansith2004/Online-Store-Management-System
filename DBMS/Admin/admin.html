@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Admin Dashboard</title>
+        <link rel="stylesheet" href="admin.css">
+        <script src="admin.js" defer></script>
+    </head>
+
+    <body>
+
+        <header>
+            <h1>Admin Dashboard</h1>
+            <nav>
+                <button id="showCustomer" onclick="loadCustomers()">Customers</button>
+                <button id="showSupplier" onclick="loadSuppliers()">Suppliers</button>
+                <button id="showItem" onclick="loadItems()">Items</button>
+            </nav>
+        </header>
+
+        <main>
+            <h2>Database Management</h2>
+
+            <p><button id="addSupplier" onclick="addSupplier()">Add Supplier</button>
+                <button id="addItem" onclick="addItem()">Add Item</button>
+            </p>
+            <div id="formArea"></div>
+            <table id="dataTable">
+                <thead>
+                    <tr id="tableHeader"></tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+
+        </main>
+        <div class="topbar">
+            <a href="http://localhost/DBMS/LogOut.php">Logout</a>
+        </div>
+
+
+    </body>
+
+</html>
